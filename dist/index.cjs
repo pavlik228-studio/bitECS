@@ -650,7 +650,7 @@ var flushRemovedEntities = (world) => {
   recycled.length = 0;
 };
 var addEntity = (world) => {
-  const eid = world[$manualEntityRecycling] ? removed.length ? removed.shift() : globalEntityCursor++ : removed.length > Math.round(defaultSize * defaultRemovedReuseThreshold) ? removed.shift() : globalEntityCursor++;
+  const eid = world[$manualEntityRecycling] ? removed.length ? removed.shift() : globalEntityCursor++ : removed.length > Math.round(globalSize * removedReuseThreshold) ? removed.shift() : globalEntityCursor++;
   if (eid > world[$size])
     throw new Error("bitECS - max entities reached");
   world[$entitySparseSet].add(eid);
